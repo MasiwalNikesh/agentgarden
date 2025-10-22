@@ -2,6 +2,7 @@
   "name": "agentic-workflow-frontend",
   "version": "1.0.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@tanstack/react-query": "^5.17.19",
     "@testing-library/jest-dom": "^5.17.0",

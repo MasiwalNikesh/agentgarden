@@ -85,3 +85,4 @@ celerybeat.pid
 secrets/
 *.pem
 *.key
+.vercel
