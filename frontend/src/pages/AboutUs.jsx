@@ -10,23 +10,16 @@ const AboutUs = () => {
   const teamMembers = [
     {
       name: "Nikesh",
-      role: "CTO & Co-Founder",
+      role: "Co-Founder",
       bio: "Technical visionary with extensive experience in AI and automation technologies, leading our engineering and product development initiatives.",
       image: "👨‍💻",
       linkedin: "#",
     },
     {
       name: "Bindu",
-      role: "CEO & Co-Founder",
+      role: "Co-Founder",
       bio: "Strategic leader with deep expertise in scaling high-growth companies and driving innovation in enterprise automation solutions.",
       image: "👩‍💼",
-      linkedin: "#",
-    },
-    {
-      name: "Ajay Sharma",
-      role: "Head of Operations",
-      bio: "Experienced operations leader focused on scaling business growth and delivering exceptional customer value.",
-      image: "👨‍🔧",
       linkedin: "#",
     },
   ];

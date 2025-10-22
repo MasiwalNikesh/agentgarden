@@ -171,3 +171,4 @@ ls -la frontend/build/
 3. Update frontend API endpoints to point to backend
 4. Configure CORS on backend for frontend domain
 5. Set up monitoring and analytics
+

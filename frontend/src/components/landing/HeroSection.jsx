@@ -355,6 +355,151 @@ const HeroSection = () => {
               </div>
             </motion.div>
           </div>
+
+          {/* Mobile AI Agent Cards */}
+          <div className="lg:hidden mt-12">
+            <div className="grid grid-cols-2 gap-4">
+              {/* Alex - AI Executive Assistant */}
+              <motion.div
+                variants={itemVariants}
+                className="glass-effect rounded-2xl shadow-lg p-4 border border-purple-200"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 rounded-xl overflow-hidden">
+                    <img
+                      src="/img/alex.png"
+                      alt="Alex - AI Executive Assistant"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-purple-700 text-sm">Alex</h3>
+                    <p className="text-xs text-gray-600">Executive Assistant</p>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-xs font-medium text-gray-700 mb-1">
+                    What I can do:
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {["Schedule", "Tasks", "Emails", "Notes"].map((skill, i) => (
+                      <span
+                        key={i}
+                        className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Max - AI Sales Representative */}
+              <motion.div
+                variants={itemVariants}
+                className="glass-effect rounded-2xl shadow-lg p-4 border border-blue-200"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 rounded-xl overflow-hidden">
+                    <img
+                      src="/img/max.png"
+                      alt="Max - AI Sales Representative"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-blue-700 text-sm">Max</h3>
+                    <p className="text-xs text-gray-600">Sales Rep</p>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-xs font-medium text-gray-700 mb-1">
+                    What I can do:
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {["CRM", "Leads", "Outreach", "Follow-up"].map((skill, i) => (
+                      <span
+                        key={i}
+                        className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Luna - AI Customer Support */}
+              <motion.div
+                variants={itemVariants}
+                className="glass-effect rounded-2xl shadow-lg p-4 border border-red-200"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 rounded-xl overflow-hidden">
+                    <img
+                      src="/img/luna.png"
+                      alt="Luna - AI Customer Support"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-red-700 text-sm">Luna</h3>
+                    <p className="text-xs text-gray-600">Support</p>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-xs font-medium text-gray-700 mb-1">
+                    What I can do:
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {["Tickets", "Issues", "Actions", "Solutions"].map((skill, i) => (
+                      <span
+                        key={i}
+                        className="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Nova - AI Marketing Associate */}
+              <motion.div
+                variants={itemVariants}
+                className="glass-effect rounded-2xl shadow-lg p-4 border border-yellow-200"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 rounded-xl overflow-hidden">
+                    <img
+                      src="/img/nova.png"
+                      alt="Nova - AI Marketing Associate"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-yellow-700 text-sm">Nova</h3>
+                    <p className="text-xs text-gray-600">Marketing</p>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-xs font-medium text-gray-700 mb-1">
+                    What I can do:
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {["Blogs", "SEO", "Social", "Brand"].map((skill, i) => (
+                      <span
+                        key={i}
+                        className="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs rounded-full"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </div>
 

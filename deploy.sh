@@ -52,3 +52,4 @@ echo "   Option A: Install Vercel CLI and run 'vercel'"
 echo "   Option B: Connect repository at vercel.com/dashboard"
 echo ""
 echo "📖 See DEPLOYMENT_GUIDE.md for detailed instructions"
+

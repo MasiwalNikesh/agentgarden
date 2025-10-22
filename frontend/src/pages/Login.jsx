@@ -319,7 +319,6 @@ const Login = () => {
             </Link>
           </div>
         </motion.form>
-
       </motion.div>
     </div>
   );
