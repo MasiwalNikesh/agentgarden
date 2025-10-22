@@ -1,0 +1,90 @@
+# Minimal Requirements - Core functionality only
+# Install with: pip install -r requirements_minimal.txt
+
+# ============================================================================
+# CORE FRAMEWORK (Required)
+# ============================================================================
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+sqlalchemy==2.0.25
+psycopg2-binary==2.9.9
+pydantic==2.5.3
+pydantic-settings==2.1.0
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+boto3==1.34.34
+redis==5.0.1
+celery==5.3.4
+requests==2.31.0
+python-dotenv==1.0.1
+
+# ============================================================================
+# LLM PROVIDERS (Choose one or both)
+# ============================================================================
+anthropic==0.18.1
+# openai==1.12.0  # Uncomment if using OpenAI
+
+# ============================================================================
+# LANGCHAIN (Core for agents)
+# ============================================================================
+langchain==0.1.10
+langchain-anthropic==0.1.6
+langchain-community==0.0.24
+
+# ============================================================================
+# INTEGRATIONS (Install as needed)
+# ============================================================================
+# For Slack integration:
+# slack-sdk==3.27.0
+
+# For Gmail integration:
+# google-api-python-client==2.119.0
+# google-auth-httplib2==0.2.0
+# google-auth-oauthlib==1.2.0
+
+# For SMS/WhatsApp:
+# twilio==9.0.0
+
+# For Stripe payments:
+# stripe==8.7.0
+
+# For CrewAI multi-agent:
+# crewai==0.11.0
+# crewai-tools==0.2.6
+
+# For LangGraph stateful workflows:
+# langgraph==0.0.26
+
+# For Memory systems:
+# mem0ai==0.0.8
+# zep-python==2.0.0
+
+# For Vector RAG:
+# pinecone-client==3.1.0
+# langchain-openai==0.0.8
+
+# For Code Execution:
+# e2b-code-interpreter==0.0.7
+
+# For Multi-LLM routing:
+# litellm==1.30.0
+
+# For Project Management:
+# PyGithub==2.2.0
+# jira==3.6.0
+
+# For HubSpot CRM:
+# hubspot-api-client==9.0.0
+
+# For Document Processing:
+# pypdf2==3.0.1
+# python-docx==1.1.0
+# pillow==10.2.0
+
+# ============================================================================
+# TESTING
+# ============================================================================
+pytest==8.0.0
+pytest-asyncio==0.23.5
+httpx==0.27.0

@@ -1,0 +1,144 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: agentic-workflow-postgres
+    environment:
+      POSTGRES_DB: agentic_workflows
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis for Celery
+  redis:
+    image: redis:7-alpine
+    container_name: agentic-workflow-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # User Service
+  user-service:
+    build:
+      context: ./backend
+      dockerfile: ./user-service/Dockerfile
+    container_name: agentic-workflow-user-service
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/agentic_workflows
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: dev-secret-key-change-in-production
+      AWS_REGION: us-east-1
+    ports:
+      - "8001:8001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./backend/shared:/app/backend/shared
+      - ./backend/user-service/app:/app/app
+
+  # Workflow Service
+  workflow-service:
+    build:
+      context: ./backend
+      dockerfile: ./workflow-service/Dockerfile
+    container_name: agentic-workflow-workflow-service
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/agentic_workflows
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+      SECRET_KEY: dev-secret-key-change-in-production
+      AWS_REGION: us-east-1
+    ports:
+      - "8002:8002"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./backend/shared:/app/backend/shared
+      - ./backend/workflow-service/app:/app/app
+
+  # Orchestration Service
+  orchestration-service:
+    build:
+      context: ./backend
+      dockerfile: ./orchestration-service/Dockerfile
+    container_name: agentic-workflow-orchestration-service
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: dev-secret-key-change-in-production
+      AWS_REGION: us-east-1
+      DEFAULT_LLM_PROVIDER: anthropic
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    ports:
+      - "8003:8003"
+    depends_on:
+      - redis
+    volumes:
+      - ./backend/shared:/app/backend/shared
+      - ./backend/orchestration-service/app:/app/app
+
+  # Celery Worker
+  worker:
+    build:
+      context: .
+      dockerfile: ./worker/Dockerfile
+    container_name: agentic-workflow-worker
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/agentic_workflows
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+      AWS_REGION: us-east-1
+      DEFAULT_LLM_PROVIDER: anthropic
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./backend/shared:/app/backend/shared
+      - ./backend/workflow-service/app/models:/app/backend/workflow-service/app/models
+      - ./backend/orchestration-service/app:/app/backend/orchestration-service/app
+      - ./worker/app:/app/worker/app
+
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: agentic-workflow-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - user-service
+      - workflow-service
+      - orchestration-service
+    environment:
+      REACT_APP_API_URL: http://localhost:8000
+
+volumes:
+  postgres_data:
+    driver: local
