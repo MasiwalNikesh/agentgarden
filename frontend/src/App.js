@@ -17,6 +17,11 @@ import OAuthCallback from "./pages/OAuthCallback";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
 import WorkflowEditorPage from "./pages/WorkflowEditorPage";
+import Pricing from "./pages/Pricing";
+import Templates from "./pages/Templates";
+import MyAgents from "./pages/MyAgents";
+import Settings from "./pages/Settings";
+import Integrations from "./pages/Integrations";
 import Navbar from "./components/Navbar";
 import "./App.css";
 
@@ -53,6 +58,8 @@ function App() {
           {/* Public routes */}
           <Route path="/" element={<LandingPage />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/templates" element={<Templates />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/auth/callback" element={<OAuthCallback />} />
@@ -64,6 +71,36 @@ function App() {
               <ProtectedRoute>
                 <AuthenticatedLayout>
                   <Dashboard />
+                </AuthenticatedLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/my-agents"
+            element={
+              <ProtectedRoute>
+                <AuthenticatedLayout>
+                  <MyAgents />
+                </AuthenticatedLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/integrations"
+            element={
+              <ProtectedRoute>
+                <AuthenticatedLayout>
+                  <Integrations />
+                </AuthenticatedLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <AuthenticatedLayout>
+                  <Settings />
                 </AuthenticatedLayout>
               </ProtectedRoute>
             }

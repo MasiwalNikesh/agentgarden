@@ -71,14 +71,6 @@ const Navbar = ({ isAuthenticated = false, user = null, onLogout }) => {
           {isAuthenticated ? (
             // Authenticated user menu
             <>
-              <span
-                style={{
-                  color: "#6b7280",
-                  fontSize: "0.875rem",
-                }}
-              >
-                Welcome, {user?.full_name || user?.email}
-              </span>
               <Link
                 to="/dashboard"
                 style={{
@@ -97,6 +89,69 @@ const Navbar = ({ isAuthenticated = false, user = null, onLogout }) => {
               >
                 Dashboard
               </Link>
+              <Link
+                to="/my-agents"
+                style={{
+                  padding: "0.5rem 1rem",
+                  color: "#374151",
+                  textDecoration: "none",
+                  borderRadius: "0.375rem",
+                  transition: "background-color 0.2s",
+                }}
+                onMouseEnter={(e) =>
+                  (e.target.style.backgroundColor = "#f3f4f6")
+                }
+                onMouseLeave={(e) =>
+                  (e.target.style.backgroundColor = "transparent")
+                }
+              >
+                My Agents
+              </Link>
+              <Link
+                to="/integrations"
+                style={{
+                  padding: "0.5rem 1rem",
+                  color: "#374151",
+                  textDecoration: "none",
+                  borderRadius: "0.375rem",
+                  transition: "background-color 0.2s",
+                }}
+                onMouseEnter={(e) =>
+                  (e.target.style.backgroundColor = "#f3f4f6")
+                }
+                onMouseLeave={(e) =>
+                  (e.target.style.backgroundColor = "transparent")
+                }
+              >
+                Integrations
+              </Link>
+              <Link
+                to="/settings"
+                style={{
+                  padding: "0.5rem 1rem",
+                  color: "#374151",
+                  textDecoration: "none",
+                  borderRadius: "0.375rem",
+                  transition: "background-color 0.2s",
+                }}
+                onMouseEnter={(e) =>
+                  (e.target.style.backgroundColor = "#f3f4f6")
+                }
+                onMouseLeave={(e) =>
+                  (e.target.style.backgroundColor = "transparent")
+                }
+              >
+                Settings
+              </Link>
+              <span
+                style={{
+                  color: "#6b7280",
+                  fontSize: "0.875rem",
+                  marginLeft: "0.5rem",
+                }}
+              >
+                {user?.full_name || user?.email}
+              </span>
               <button
                 onClick={onLogout}
                 style={{

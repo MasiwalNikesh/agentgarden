@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useParallax } from "../../hooks/useScrollAnimation";
+import { TextRevealByWord } from "../animations/TextReveal";
+import MagneticButton from "../animations/MagneticButton";
+import BlobBackground from "../animations/BlobBackground";
 
 const HeroSection = () => {
   const parallaxOffset = useParallax(0.3);
@@ -43,48 +46,8 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-50 via-white to-accent-50 pt-24">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute top-0 -left-4 w-96 h-96 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute top-0 right-4 w-96 h-96 bg-accent-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, -50, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute -bottom-8 left-20 w-96 h-96 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
-          animate={{
-            scale: [1, 1.1, 1],
-            x: [0, 30, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 9,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
+      {/* Animated blob background */}
+      <BlobBackground />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -106,8 +69,17 @@ const HeroSection = () => {
               variants={itemVariants}
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
             >
-              Meet Your Garden of Agents
-              <span className="block text-gradient">Ready to Work 24/7</span>
+              <TextRevealByWord
+                text="Meet Your Garden of Agents"
+                className="inline-block"
+              />
+              <span className="block text-gradient">
+                <TextRevealByWord
+                  text="Ready to Work 24/7"
+                  delay={0.4}
+                  className="inline-block"
+                />
+              </span>
             </motion.h1>
 
             <motion.p
@@ -126,22 +98,21 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <Link to="/register">
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
+                <MagneticButton
                   className="px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-xl font-semibold shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transition-all"
+                  strength={0.3}
                 >
                   Start Building Free
-                </motion.button>
+                </MagneticButton>
               </Link>
-              <motion.a
-                href="#demo"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 glass-effect text-gray-900 rounded-xl font-semibold hover:bg-white/90 transition-all text-center"
-              >
-                Watch Demo
-              </motion.a>
+              <a href="#demo">
+                <MagneticButton
+                  className="px-8 py-4 glass-effect text-gray-900 rounded-xl font-semibold hover:bg-white/90 transition-all text-center"
+                  strength={0.25}
+                >
+                  Watch Demo
+                </MagneticButton>
+              </a>
             </motion.div>
 
             <motion.div
@@ -382,14 +353,16 @@ const HeroSection = () => {
                     What I can do:
                   </div>
                   <div className="flex flex-wrap gap-1">
-                    {["Schedule", "Tasks", "Emails", "Notes"].map((skill, i) => (
-                      <span
-                        key={i}
-                        className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full"
-                      >
-                        {skill}
-                      </span>
-                    ))}
+                    {["Schedule", "Tasks", "Emails", "Notes"].map(
+                      (skill, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full"
+                        >
+                          {skill}
+                        </span>
+                      )
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -417,14 +390,16 @@ const HeroSection = () => {
                     What I can do:
                   </div>
                   <div className="flex flex-wrap gap-1">
-                    {["CRM", "Leads", "Outreach", "Follow-up"].map((skill, i) => (
-                      <span
-                        key={i}
-                        className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full"
-                      >
-                        {skill}
-                      </span>
-                    ))}
+                    {["CRM", "Leads", "Outreach", "Follow-up"].map(
+                      (skill, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full"
+                        >
+                          {skill}
+                        </span>
+                      )
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -452,14 +427,16 @@ const HeroSection = () => {
                     What I can do:
                   </div>
                   <div className="flex flex-wrap gap-1">
-                    {["Tickets", "Issues", "Actions", "Solutions"].map((skill, i) => (
-                      <span
-                        key={i}
-                        className="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full"
-                      >
-                        {skill}
-                      </span>
-                    ))}
+                    {["Tickets", "Issues", "Actions", "Solutions"].map(
+                      (skill, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full"
+                        >
+                          {skill}
+                        </span>
+                      )
+                    )}
                   </div>
                 </div>
               </motion.div>

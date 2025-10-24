@@ -1,9 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import { use3DTilt } from "../../hooks/use3DTilt";
+import { GlowCard } from "../animations/MicroInteractions";
 
 const FeatureCard = ({ icon, title, description, delay }) => {
   const [ref, isVisible] = useScrollAnimation(0.2);
+  const tiltRef = use3DTilt(8, 1000);
 
   return (
     <motion.div
@@ -11,28 +14,32 @@ const FeatureCard = ({ icon, title, description, delay }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ y: -8, transition: { duration: 0.3 } }}
       className="relative group"
     >
-      <div className="h-full p-8 glass-effect rounded-2xl hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-2xl">
-        <motion.div
-          className="w-14 h-14 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center mb-6 shadow-lg"
-          whileHover={{ rotate: 360, scale: 1.1 }}
-          transition={{ duration: 0.6 }}
+      <GlowCard className="h-full">
+        <div
+          ref={tiltRef}
+          className="h-full p-8 glass-effect rounded-2xl hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-2xl"
         >
-          {icon}
-        </motion.div>
-        <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
-        <p className="text-gray-600 leading-relaxed">{description}</p>
+          <motion.div
+            className="w-14 h-14 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center mb-6 shadow-lg"
+            whileHover={{ rotate: 360, scale: 1.1 }}
+            transition={{ duration: 0.6 }}
+          >
+            {icon}
+          </motion.div>
+          <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
+          <p className="text-gray-600 leading-relaxed">{description}</p>
 
-        <motion.div
-          className="absolute top-0 left-0 w-full h-full rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(97, 114, 243, 0.05) 0%, rgba(217, 70, 239, 0.05) 100%)",
-          }}
-        />
-      </div>
+          <motion.div
+            className="absolute top-0 left-0 w-full h-full rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(97, 114, 243, 0.05) 0%, rgba(217, 70, 239, 0.05) 100%)",
+            }}
+          />
+        </div>
+      </GlowCard>
     </motion.div>
   );
 };

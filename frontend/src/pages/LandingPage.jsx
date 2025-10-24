@@ -3,6 +3,7 @@ import Navbar from "../components/landing/Navbar";
 import HeroSection from "../components/landing/HeroSection";
 import ProductsSection from "../components/landing/ProductsSection";
 import FeaturesSection from "../components/landing/FeaturesSection";
+import StatsSection from "../components/landing/StatsSection";
 import TemplateShowcase from "../components/landing/TemplateShowcase";
 import ProductDemoSection from "../components/landing/ProductDemoSection";
 import TestimonialsSection from "../components/landing/TestimonialsSection";
@@ -16,6 +17,7 @@ const LandingPage = () => {
       <main>
         <HeroSection />
         <ProductsSection />
+        <StatsSection />
         <FeaturesSection />
         <TemplateShowcase />
         <ProductDemoSection />
