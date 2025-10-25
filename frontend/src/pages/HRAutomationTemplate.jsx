@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -80,9 +80,9 @@ const HRAutomationTemplate = () => {
     },
   ];
 
-  const [candidates, setCandidates] = useState(mockCandidates);
+  const [candidates] = useState(mockCandidates);
 
-  const workflowSteps = [
+  const workflowSteps = useMemo(() => [
     {
       id: "start",
       title: "Start / Lead Ingestion",
@@ -153,7 +153,7 @@ const HRAutomationTemplate = () => {
       details: "Comprehensive dashboard displays all call attempts, success rates, candidate feedback, and AI interaction summaries in real-time.",
       duration: 1500,
     },
-  ];
+  ], []);
 
   const features = [
     {
@@ -209,7 +209,7 @@ const HRAutomationTemplate = () => {
         updateCandidateStatus(selectedCandidate.id, "completed");
       }
     }
-  }, [isPlaying, currentStep, selectedCandidate]);
+  }, [isPlaying, currentStep, selectedCandidate, workflowSteps]);
 
   const addActivity = (step, candidate) => {
     const timestamp = new Date().toLocaleTimeString();
