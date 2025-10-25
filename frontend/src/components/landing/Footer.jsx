@@ -59,8 +59,12 @@ const Footer = () => {
               whileHover={{ scale: 1.05 }}
               className="flex items-center gap-2 mb-4"
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-accent-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-xl">AI</span>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
+                <img
+                  src="/img/logo-ag.png"
+                  alt="AgentGarden Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="text-xl font-bold text-white">AgentFlow</span>
             </motion.div>

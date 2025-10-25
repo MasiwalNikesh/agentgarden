@@ -106,20 +106,12 @@ const NotFound = () => {
                 to="/"
                 className="flex items-center gap-3 hover:opacity-80 transition-opacity"
               >
-                <div className="w-14 h-14 bg-gradient-to-br from-primary-600 to-accent-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
+                  <img
+                    src="/img/logo-ag.png"
+                    alt="AgentGarden Logo"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <div className="flex flex-col text-left">
                   <span className="text-2xl font-bold text-gray-900">

@@ -9,6 +9,7 @@ This guide provides step-by-step instructions for deploying the AgentGarden plat
 Perfect for getting your frontend live quickly.
 
 #### Prerequisites
+
 - Git repository (GitHub/GitLab/Bitbucket)
 - Vercel account (free at [vercel.com](https://vercel.com))
 
@@ -36,6 +37,7 @@ git push origin main
 2. Click **"New Project"**
 3. Import your Git repository
 4. Configure the project:
+
    - **Framework Preset**: Create React App
    - **Root Directory**: `frontend`
    - **Build Command**: `npm run build`
@@ -97,18 +99,21 @@ Railway is perfect for microservices and includes PostgreSQL/Redis.
 2. **Create a new project**
 
 3. **Add PostgreSQL:**
+
    - Click "New" → "Database" → "PostgreSQL"
    - Copy the `DATABASE_URL` connection string
 
 4. **Add Redis:**
+
    - Click "New" → "Database" → "Redis"
    - Copy the `REDIS_URL` connection string
 
 5. **Deploy User Service:**
+
    ```bash
    # In your project root
    cd backend/user-service
-   
+
    # Create railway.json
    cat > railway.json << EOF
    {
@@ -123,12 +128,13 @@ Railway is perfect for microservices and includes PostgreSQL/Redis.
      }
    }
    EOF
-   
+
    # Deploy
    railway up
    ```
 
 6. **Repeat for other services:**
+
    - Workflow Service (port 8002)
    - Orchestration Service (port 8003)
    - Worker Service
@@ -141,14 +147,17 @@ Railway is perfect for microservices and includes PostgreSQL/Redis.
 1. **Sign up at [render.com](https://render.com)**
 
 2. **Create PostgreSQL Database:**
+
    - Dashboard → New → PostgreSQL
    - Copy the internal/external database URLs
 
 3. **Create Redis Instance:**
+
    - Dashboard → New → Redis
    - Copy the Redis URL
 
 4. **Deploy each service as a Web Service:**
+
    - Dashboard → New → Web Service
    - Connect your Git repository
    - Set:
@@ -185,11 +194,13 @@ docker push YOUR_AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/user-service:latest
 1. **Sign up at [digitalocean.com](https://www.digitalocean.com/products/app-platform)**
 
 2. **Create App from GitHub:**
+
    - Apps → Create App
    - Choose your repository
    - Detect services automatically
 
 3. **Add Managed Databases:**
+
    - PostgreSQL Database
    - Redis Database
 
@@ -205,6 +216,7 @@ docker push YOUR_AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/user-service:latest
 Perfect for staging environments or self-hosting.
 
 #### Prerequisites
+
 - VPS with Ubuntu 22.04+ (AWS EC2, DigitalOcean Droplet, etc.)
 - At least 2GB RAM, 2 vCPUs
 
@@ -440,11 +452,13 @@ docker-compose exec -T postgres psql -U postgres agentic_workflows < backup.sql
 ### Horizontal Scaling
 
 1. **Use managed services:**
+
    - AWS RDS for PostgreSQL
    - AWS ElastiCache for Redis
    - AWS ECS/Fargate for containers
 
 2. **Load balancing:**
+
    - AWS ALB or Nginx for backend services
    - Vercel handles frontend automatically
 
@@ -505,6 +519,7 @@ If you encounter issues:
 5. Check firewall rules
 
 For additional help, refer to:
+
 - `README.md` - Project overview
 - `DEPLOYMENT_GUIDE.md` - Vercel-specific guide
 - `QUICK_START.md` - Local development setup
@@ -513,4 +528,3 @@ For additional help, refer to:
 ---
 
 **🎉 Congratulations! Your AgentGarden platform is now deployed!**
-

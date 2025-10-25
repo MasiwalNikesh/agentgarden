@@ -22,6 +22,7 @@ import Templates from "./pages/Templates";
 import MyAgents from "./pages/MyAgents";
 import Settings from "./pages/Settings";
 import Integrations from "./pages/Integrations";
+import HRAutomationTemplate from "./pages/HRAutomationTemplate";
 import Navbar from "./components/Navbar";
 import "./App.css";
 
@@ -60,6 +61,7 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/templates" element={<Templates />} />
+          <Route path="/templates/hr-automation" element={<HRAutomationTemplate />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/auth/callback" element={<OAuthCallback />} />

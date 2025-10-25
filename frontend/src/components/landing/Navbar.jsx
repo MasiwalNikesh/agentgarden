@@ -40,20 +40,12 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               className="flex items-center gap-3 cursor-pointer"
             >
-              <div className="w-11 h-11 bg-gradient-to-br from-primary-600 to-accent-600 rounded-xl flex items-center justify-center shadow-lg">
-                <svg
-                  className="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
+                <img
+                  src="/img/logo-ag.png"
+                  alt="AgentGarden Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold text-gray-900 leading-tight">

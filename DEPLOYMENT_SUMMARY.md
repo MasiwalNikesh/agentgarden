@@ -14,6 +14,7 @@
 - **Repository:** https://github.com/MasiwalNikesh/agentgarden
 
 #### What's Deployed:
+
 - ✅ Landing page with animations
 - ✅ Hero section with interactive elements
 - ✅ Features section
@@ -36,12 +37,14 @@ The backend services (User Service, Workflow Service, Orchestration Service) are
 Railway is perfect for microservices with built-in PostgreSQL and Redis.
 
 #### Step 1: Sign Up
+
 ```bash
 # Visit https://railway.app
 # Sign up with GitHub (free tier available)
 ```
 
 #### Step 2: Install Railway CLI
+
 ```bash
 npm install -g @railway/cli
 
@@ -52,20 +55,24 @@ railway login
 #### Step 3: Deploy Services
 
 **A. Create New Project**
+
 ```bash
 cd /Users/nikesh/Projects/Projects/SWEMT_02
 railway init
 ```
 
 **B. Add PostgreSQL Database**
+
 - In Railway dashboard: New → Database → PostgreSQL
 - Copy the `DATABASE_URL` connection string
 
 **C. Add Redis**
-- In Railway dashboard: New → Database → Redis  
+
+- In Railway dashboard: New → Database → Redis
 - Copy the `REDIS_URL` connection string
 
 **D. Deploy User Service**
+
 ```bash
 cd backend/user-service
 railway up
@@ -75,6 +82,7 @@ railway up
 ```
 
 **E. Repeat for Other Services**
+
 - Workflow Service
 - Orchestration Service
 - Worker Service
@@ -91,6 +99,7 @@ REACT_APP_ORCHESTRATION_SERVICE_URL=https://orchestration-service.railway.app
 ```
 
 Then redeploy frontend:
+
 ```bash
 vercel --prod
 ```
@@ -102,19 +111,23 @@ vercel --prod
 Render offers free tier for PostgreSQL and web services.
 
 #### Step 1: Sign Up
+
 - Visit https://render.com
 - Sign up with GitHub
 
 #### Step 2: Create PostgreSQL Database
+
 - Dashboard → New → PostgreSQL
 - Select Free tier
 - Copy Internal/External Database URLs
 
 #### Step 3: Create Redis Instance
+
 - Dashboard → New → Redis
 - Copy Redis URL
 
 #### Step 4: Deploy Each Service
+
 - Dashboard → New → Web Service
 - Connect your GitHub repository
 - Configure each service:
@@ -125,7 +138,9 @@ Render offers free tier for PostgreSQL and web services.
   - **Health Check Path:** /health
 
 #### Step 5: Set Environment Variables
+
 In each service's settings, add:
+
 - `DATABASE_URL`
 - `REDIS_URL`
 - `SECRET_KEY`
@@ -139,6 +154,7 @@ In each service's settings, add:
 For a production deployment with full control:
 
 #### AWS Services Needed:
+
 - **ECS/Fargate:** Container orchestration
 - **RDS PostgreSQL:** Managed database
 - **ElastiCache Redis:** Managed Redis
@@ -147,6 +163,7 @@ For a production deployment with full control:
 - **CloudWatch:** Monitoring
 
 #### Quick AWS Deploy Script:
+
 ```bash
 # 1. Build and push to ECR
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin YOUR_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com
@@ -171,6 +188,7 @@ docker push YOUR_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/user-service:latest
 Deploy everything on a single server using Docker.
 
 #### Requirements:
+
 - VPS with Ubuntu 22.04+ (DigitalOcean, Linode, AWS EC2)
 - At least 2GB RAM, 2 vCPUs
 - Domain name (optional but recommended)
@@ -213,6 +231,7 @@ sudo apt install nginx -y
 ```
 
 #### Nginx Configuration:
+
 ```nginx
 # /etc/nginx/sites-available/agentgarden
 server {
@@ -238,6 +257,7 @@ server {
 ## 📊 Current Infrastructure
 
 ### Deployed Services
+
 ```
 ✅ Frontend (Vercel)
    └─> https://agentgarden-m5pif1tz8-switchrs-projects.vercel.app
@@ -304,6 +324,7 @@ REACT_APP_ORCHESTRATION_SERVICE_URL=https://your-backend:8003
 ## 🧪 Testing Your Deployment
 
 ### Test Frontend
+
 ```bash
 # Visit your Vercel URL
 open https://agentgarden-m5pif1tz8-switchrs-projects.vercel.app
@@ -314,6 +335,7 @@ open https://agentgarden-m5pif1tz8-switchrs-projects.vercel.app
 ```
 
 ### Test Backend (Once Deployed)
+
 ```bash
 # Health checks
 curl https://your-backend:8001/health
@@ -331,11 +353,13 @@ open https://your-backend:8003/docs
 ## 📈 Monitoring & Maintenance
 
 ### Vercel Monitoring
+
 - View deployment logs: `vercel logs`
 - View analytics in Vercel Dashboard
 - Set up error tracking (Sentry integration available)
 
 ### Backend Monitoring (After Deployment)
+
 - Health checks every 5 minutes
 - Log aggregation (CloudWatch, Datadog, etc.)
 - Uptime monitoring (UptimeRobot, Pingdom)
@@ -385,6 +409,7 @@ open https://your-backend:8003/docs
 ⏳ **Backend services ready to deploy** - Choose your preferred platform above
 
 ### Quick Win: Test with Mock Mode
+
 You can test the entire system locally with mock mode while you decide on backend hosting:
 
 ```bash
@@ -404,6 +429,7 @@ cd backend/user-service && uvicorn app.main:app --port 8001
 ```
 
 ### Recommended Next Action:
+
 1. **Test frontend:** Visit https://agentgarden-m5pif1tz8-switchrs-projects.vercel.app
 2. **Choose backend platform:** Railway (easiest) or Render (good free tier)
 3. **Deploy backend services** using instructions above
@@ -413,4 +439,3 @@ cd backend/user-service && uvicorn app.main:app --port 8001
 ---
 
 **Questions or issues? Check the troubleshooting section or review the detailed guides!**
-

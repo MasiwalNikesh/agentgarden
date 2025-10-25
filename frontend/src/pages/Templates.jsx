@@ -104,6 +104,7 @@ const Templates = () => {
       popularity: "Medium",
       icon: "👥",
       color: "indigo",
+      detailsLink: "/templates/hr-automation",
     },
     {
       id: 7,
@@ -267,13 +268,25 @@ const Templates = () => {
           <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-200">
             <span className="text-xs text-gray-500">{template.tasks}</span>
             <div className="flex gap-2">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-4 py-2 text-sm border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-              >
-                Preview
-              </motion.button>
+              {template.detailsLink ? (
+                <Link to={template.detailsLink}>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-4 py-2 text-sm border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    View Details
+                  </motion.button>
+                </Link>
+              ) : (
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-4 py-2 text-sm border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  Preview
+                </motion.button>
+              )}
               <Link to="/register">
                 <motion.button
                   whileHover={{ scale: 1.05 }}

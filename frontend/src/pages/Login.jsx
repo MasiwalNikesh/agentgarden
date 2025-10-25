@@ -128,20 +128,12 @@ const Login = () => {
         {/* Header */}
         <motion.div variants={itemVariants} className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary-600 to-accent-600 rounded-xl flex items-center justify-center shadow-lg">
-              <svg
-                className="w-7 h-7 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
+              <img
+                src="/img/logo-ag.png"
+                alt="AgentGarden Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
